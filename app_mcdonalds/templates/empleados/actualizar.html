@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Empleado</h2>
+<form method="post" action="{% url 'realizar_actualizacion_empleados' empleado.id_empleado %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" value="{{ empleado.nombre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" name="apellido" value="{{ empleado.apellido }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="puesto" class="form-label">Puesto</label>
+        <input type="text" name="puesto" value="{{ empleado.puesto }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_contratacion" class="form-label">Fecha de Contratación</label>
+        <input type="datetime-local" name="fecha_contratacion" value="{{ empleado.fecha_contratacion|date:'Y-m-d\TH:i' }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="salario" class="form-label">Salario</label>
+        <input type="number" name="salario" value="{{ empleado.salario }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}

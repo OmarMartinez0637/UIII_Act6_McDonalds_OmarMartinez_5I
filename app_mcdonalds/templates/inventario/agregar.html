@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Agregar Insumo al Inventario</h2>
+<form method="post" class="bg-light p-4 rounded">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre_insumo" class="form-label">Nombre del Insumo</label>
+        <input type="text" name="nombre_insumo" id="nombre_insumo" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input type="number" name="cantidad" id="cantidad" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="unidad" class="form-label">Unidad</label>
+        <input type="text" name="unidad" id="unidad" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="id_proveedor" class="form-label">Proveedor</label>
+        <select name="id_proveedor" id="id_proveedor" class="form-control" required>
+            {% for proveedor in proveedores %}
+            <option value="{{ proveedor.id_proveedor }}">{{ proveedor.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="fecha_entrega" class="form-label">Fecha de Entrega</label>
+        <input type="datetime-local" name="fecha_entrega" id="fecha_entrega" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+{% endblock %}

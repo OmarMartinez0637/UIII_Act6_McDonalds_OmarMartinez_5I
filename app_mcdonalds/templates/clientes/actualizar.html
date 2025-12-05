@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Actualizar Cliente</h2>
+<form method="post" action="{% url 'realizar_actualizacion_clientes' cliente.id_cliente %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" name="nombre" value="{{ cliente.nombre }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" name="telefono" value="{{ cliente.telefono }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" value="{{ cliente.email }}" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <textarea name="direccion" class="form-control" required>{{ cliente.direccion }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="genero" class="form-label">Género</label>
+        <input type="text" name="genero" value="{{ cliente.genero }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>
+{% endblock %}

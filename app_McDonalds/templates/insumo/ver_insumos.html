@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Ver Insumos</h2>
+<table class="table table-striped bg-light">
+    <thead><tr><th>ID</th><th>Nombre Insumo</th><th>Cantidad</th><th>Unidad</th><th>Proveedor</th><th>Fecha Entrega</th><th>Acciones</th></tr></thead>
+    <tbody>
+        {% for insumo in insumos %}
+        <tr>
+            <td>{{ insumo.id_insumo }}</td>
+            <td>{{ insumo.nombre_insumo }}</td>
+            <td>{{ insumo.cantidad }}</td>
+            <td>{{ insumo.unidad }}</td>
+            <td>{{ insumo.id_proveedor.nombre }}</td>
+            <td>{{ insumo.fecha_entrega }}</td>
+            <td>
+                <a href="{% url 'actualizar_insumo' insumo.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'borrar_insumo' insumo.pk %}" class="btn btn-danger btn-sm">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
